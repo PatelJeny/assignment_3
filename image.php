@@ -6,13 +6,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $target_dir ="C:\\xampp\htdocs\assignment_3\image\\";
     $target_file = $target_dir . basename($_FILES["file"]["name"]);
-    echo $target_file;
+    // echo $target_file;
 
     if(move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)){
-        echo "file has been uploaded";
+        echo json_encode(['success' => 'File uploaded successfully.']);
+        
     }
     else{
-        echo "something went wrong";
+        echo json_encode(['error' => 'Failed to move uploaded file.']);
     }
 
     
